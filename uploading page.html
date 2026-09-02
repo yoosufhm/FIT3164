@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset ="UTF-8">
+<title>FISHTVIT</title>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgb(37, 145, 163);
+        margin: 0;
+        padding: 0;
+        color: rgb(0, 12, 12);
+    }
+    .nav {
+        background-color: rgb(37, 79, 233);
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .nav .logo {
+        color: rgb(1, 15, 15);
+        font-size: 20px;
+        font-weight: bolder;
+    }
+    .nav a {
+        color: cadetblue;
+        margin-left: 20px;
+        font-size: 14px;
+    }
+    .title-area {
+        text-align: center;
+        padding: 30px 20px;    
+    }
+    .title-area h1 {
+        margin:0;
+        font-size: 25px;
+    }
+    .title-area p{
+        color: rgb(0, 4, 10);
+        font-size: 15px;
+    }
+    .cntr {
+        max-width: 600px;
+        margin: auto;
+        padding: 0 20px 40px;
+    }
+    .rules { 
+        background-color: aliceblue;
+        border: 1px solid;
+        padding: 10px;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    #dropArea {
+        border: 3px dashed;
+        border-radius: 8px;
+        background-color: antiquewhite;
+        padding: 40px 20px;
+        text-align: center;
+    }
+    #dropArea h3 {
+        margin: 10px 0 5px 0;
+    }
+    #dropArea p {
+        color: rgb(0, 12, 12);
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    #button {
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 5px;
+        border: none;
+        padding:  10px 18px;
+    }
+    #browseB {
+        background-color: burlywood;
+        color: white;
+        font-weight: bold;
+    }
+    #submitB {
+        background-color: burlywood;
+        color: blue;
+        font-weight: bold;
+    }
+    #submitB :disabled{
+        background-color: aliceblue;
+        cursor: not-allowed;
+    }
+    #removeB {
+        background-color: white;
+        border: 1px;
+
+    }
+    #backB{
+        background-color: white;
+        border: 1px;
+    }
+    #errorDis {
+        display: none;
+        background-color: cadetblue;
+        border: 1px;
+        padding: 10px;
+        margin-top: 15px;
+        font-size: 13px;
+    }    
+    #previewArea {
+        display: none;
+        background-color: white;
+        border: 1px;
+        border-radius: 6px;
+        padding: 15px;
+        margin: 20px;
+        text-align: center;
+    }
+    #previewArea img {
+        max-width: 180px;
+        max-height: 180px;
+        display: block;
+        margin: 0;
+        border-radius: 4px;
+    }
+    #previewArea p {
+        margin: 3px;
+        font-size: 12px;
+    }
+    .buttonR{
+        display: flex;
+        justify-content: center;
+        margin-top: 18px;
+        gap: 13px;
+    }
+    .bottomN {
+        margin-top: 18px;
+        text-align: center;
+    }
+
+</style>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="logo">FISHTVIT</div>
+        <div>
+            <a href="#">Home</a>
+            <a href="#">The Model</a>
+            <a href="#">Instructions</a>
+            <a href="#">Classification</a>
+        </div>
+    </div>
+    <div class="title-area">
+        <h1>Upload a Fish Image</h1>
+        <p>Upload a picture of an asian fish species</p>
+    </div>
+    <div class="cntr">
+        <div class="rules">
+            Accepted format: PNG | Max size: 8MB
+        </div>
+        <div id="dropArea">
+            <h3>Upload the image</h3>
+            <p>To choose a file click on the button below</p>
+            <button type="button" id="browseB">Choose File</button>
+            <input type="file" id="fileInput" accept=".png" style="display:none;">
+        </div>
+        <div id="errorDis"></div>
+        <div id="previewArea">
+            <img id="previewImg" src="" alt="preview">
+            <p id="fileName"></p>
+        </div>
+        <div class="buttonR">
+            <button type="button" id="removeB">Remove</button>
+            <button type="button" id="submitB" disabled>Submit</button>
+        </div>
+        <div class="bottomN">
+            <button type="button" id="backB">Back to Home</button>
+        </div>
+    </div>
+    <script>
+        var file= document.getElementById("fileInput");
+        var browse= document.getElementById("browseB");
+        var errorDis= document.getElementById("errorDis");
+        var previewArea= document.getElementById("previewArea");
+        var preivewImg= document.getElementById("previewImg");
+        var fileName= document.getElementById("fileName");
+        var submitB= document.getElementById("submitB");
+        var removeB= document.getElementById("removeB")
+        var myFile= null;
+
+        browse.onclick = function () {
+            file.click();
+        }
+        file.onchange = function () {
+            myFile = file.files[0];
+            errorDis.style.display = "none";
+            if (myFile.type != "image/png") {
+                errorDis.innerText = "Please upload a PNG file only.";
+                errorDis.style.display = "block";
+            } 
+            else if (myFile.size> 8000000) {
+                errorDis.innerText = "File too big, max is 8MB";
+                errorDis.style.display= "block";
+            }
+            else {
+                var read = new FileReader();
+                read.onload = function (r) {
+                    previewImg.src = r.target.result;
+                }
+                read.readAsDataURL(myFile);
+                fileName.innerText = myFile.name;
+                previewArea.style.display= "block";
+                submitB.disabled= false;    
+            }
+        }
+
+        removeB.onclick= function() {
+            file.value = "";
+            previewArea.style.display= "none";
+            submitB.disabled= true;
+            errorDis.style.display="none";
+        }
+        submitB.onclick= function() {
+            alert("Would send" + myFile.name + "for classification" )
+        }
+    </script>
+</body>
+</html>
