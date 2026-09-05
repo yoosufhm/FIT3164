@@ -1,1 +1,87 @@
-]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel = "stylesheet" href = "homepage_style.css" />
+    <script src="https://kit.fontawesome.com/10ab56747e.js" crossorigin="anonymous"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght,YOPQ@100..900,300&display=swap" rel="stylesheet"/>
+</head>
+<body>
+    <!--Navbar Section -->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <!-- Now we will create the logo and for IDs we will use the hashtag a#navbar__logo-->
+        <a href="/" id="navbar__logo">
+            <i class="fa-solid fa-fish"></i>SnapFin
+        </a>
+            <!--  .navbar__toggle#mobile-menu this is the javascript that we will be targeting -->
+              <div class="navbar__toggle" id="mobile-menu">
+                <!-- Create a span with the class of bar -->
+                 <span class="bar"></span>
+                 <span class="bar"></span>
+                 <span class="bar"></span>
+              </div>
+            <!-- Create ul with nav bar menu class -->
+             <ul class="navbar__menu">
+                <!-- Createe the first menu item-->
+               <li class="navbar__item">
+                <!-- Create the a tag -->
+                 <a href="homepage_index.html" class="navbar__links">Home</a>
+               </li>
+                 <!-- Createe the second menu item-->
+               <li class="navbar__item">
+                <!-- Create the a tag -->
+                 <a href="model_info.html" class="navbar__links">The Model</a>
+               </li>
+                 <!-- Create the third menu item-->
+               <li class="navbar__item">
+                <!-- Create the a tag -->
+                 <a href="instructions.html" class="navbar__links" id = "nav-instructions">Instructions</a>
+               </li>
+                <!-- Createe the fourth menu item-->
+               <li class="navbar__item">
+                <!-- Create the a tag -->
+                 <a href="/Website_ImageUploadingPage/image_uploading_page.html" class="navbar__links check-instructions">Classify Fish</a>
+               </li>
+                 <!-- Create the button menu item-->
+               <li class="navbar__btn">
+                <!-- Create the a tag -->
+                 <a href="/Website_ImageUploadingPage/image_uploading_page.html" class="button check-instructions">Try Now → </a>
+               </li>
+             </ul>
+        </div>
+    </nav>
+    <!-- Main Content Section -->
+     <div class="main">
+        <div class="main__container">
+        <div class="main__content">
+            <h3>
+            Automated Fish <span class="highlighted-text"><br>Species Classification </span>
+           </h3>
+            <p>The SnapFin Framework combines a pre-trained Transfer Learning <br> backbone with a Vision Transformer to recognise Asian freshwater <br> and marine fish species with precise accuracy. One Click. Instant Results.
+            <div class = "main__btn-group">
+              <!-- Check-Instructions Class -->
+            <button class="main__btn"><a href="/Website_ImageUploadingPage/image_uploading_page.html" class = "check-instructions">Classify a Fish > </a></button>
+             <button class="main__btn"><a href="/Website_ModelInfoPage/model_info.html">About The Model </a></button>
+            </div>
+          </div>
+        </div>
+     </div>
+
+     <!-- Alert box (Hidden by Default)-->
+      <div id = "alert-box" class = "alert-overlay">
+        <div class = "alert-box-content">
+          <i class="fa-solid fa-circle-exclamation alert-icon"></i>
+          <h4> Action is required </h4>
+          <p> Please review the instructions on how to properly upload your images again beefore classifying a fish. Click on <strong>"Instructions"</strong> in the navigation bar above to read the instructions on how to upload the image correctly.</p>
+          <button id = "alert-box-okay-btn" class = "alert-btn">Okay</button>         
+        </div>
+      </div>
+
+    <script src = "homepage_script.js"></script>
+</body>
+</html>
