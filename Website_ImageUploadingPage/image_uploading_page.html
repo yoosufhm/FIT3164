@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapFin - Upload Image</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="image_uploading_page.css">
+    <script src="https://kit.fontawesome.com/10ab56747e.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght,YOPQ@100..900,300&display=swap" rel="stylesheet"/>
+</head>
+<body>
+    <!-- Top Alert Banner (Hidden by default)-->
+     <div id="top-alert-banner" class="alert-hidden">
+        <div class="banner-content">
+            <i class="fa-solid fa-circle-xmark" style = "color: #ffffff;"></i>
+            <span id="banner-message">Please upload a valid file.</span>
+        </div>
+        <button id="close-banner-btn">x</button>
+    </div>
+
+    <!-- Image Upload Sucess Banner (Hidden by default) -->
+     <div id = "image-upload-success-banner" class = "alert-hidden">
+        <div class = "banner-content">
+            <i class = "fa-solid fa-circle-check" style = "color: #44ecff;"></i>
+            <span id = "success-banner-message">Success message goes here.</span>
+        </div>
+        <button id = "close-success-btn">x</button>
+     </div>
+    
+        <!--Navbar Section -->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <!-- Now we will create the logo and for IDs we will use the hashtag a#navbar__logo-->
+        <a href="/" id="navbar__logo">
+            <i class="fa-solid fa-fish"></i>SnapFin
+        </a>
+            <!--  .navbar__toggle#mobile-menu this is the javascript that we will be targeting -->
+              <div class="navbar__toggle" id="mobile-menu">
+                <!-- Create a span with the class of bar -->
+                 <span class="bar"></span>
+                 <span class="bar"></span>
+                 <span class="bar"></span>
+              </div>
+            <!-- Create ul with nav bar menu class -->
+             <ul class="navbar__menu">
+                <!-- Createe the first menu item-->
+               <li class="navbar__item">
+                <!-- Create the a tag -->
+                 <a href="/Website_HomePage/homepage_index.html" class="navbar__links">Home</a>
+               </li>
+                 <!-- Createe the second menu item-->
+               <li class="navbar__item">
+                <!-- Create the a tag -->
+                 <a href="model_info.html" class="navbar__links">The Model</a>
+               </li>
+                 <!-- Create the third menu item-->
+               <li class="navbar__item">
+                <!-- Create the a tag -->
+                 <a href="instructions.html" class="navbar__links" id = "nav-instructions">Instructions</a>
+               </li>
+                <!-- Createe the fourth menu item-->
+               <li class="navbar__item">
+                <!-- Create the a tag -->
+                 <a href="/Website_ImageUploadingPage/image_uploading_page.html" class="navbar__links check-instructions">Classify Fish</a>
+               </li>
+                 <!-- Create the button menu item-->
+               <li class="navbar__btn">
+                <!-- Create the a tag -->
+                 <a href="/Website_ImageUploadingPage/image_uploading_page.html" class="button check-instructions">Try Now → </a>
+               </li>
+             </ul>
+        </div>
+    </nav>
+    <!-- Main Content Section along with the upload file can we also allow user to drag and upload the image-->
+
+    <div class="main">
+        <div class = "main__container">
+            <div class="main__content__upload-box">
+                <div class="main__title-area">
+                    <h3> Upload a <span class="highlight">Fish Image </span></h3>
+                    <p> Upload a clear image of an Asian freshwater or marine species.</p>
+                </div>
+    <div class="main__upload-container">
+        <div class="rules">
+            <i class = "fa-solid fa-file-image"></i> Accepted format: PNG | Max size: 8MB
+        </div>
+
+        <!-- THE DROP ZONE: Users interact with this box -->
+        <div id="dropArea">
+            <h3> Select your Image </h3>
+            <!-- Instructions message to tell users that they can upload the image by clicking or they can drag or paste as well-->
+            <p> Click, drag & drop, or press Ctrl+V to paste an image </p>
+            <!-- This is the upload button which users can click to open the files -->
+            <button type="button" class = "main__btn"id="browseBtn">Choose File</button>
+            <!-- The hidden mechanical input that actually handles the file -->
+            <input type="file" id="fileInput" accept=".png" style="display:none;">
+        </div>
+
+        <!-- PREVIEW AREA: This Area is Hidden by default,it shows the image once loaded -->
+        <div id="previewArea">
+            <!-- The empty image tag where the preview will be inserted -->
+            <img id="previewImg" src="" alt="preview">
+            <!-- This the line where the file name will be written -->
+            <p id="fileName"></p>
+        </div>
+
+        <!-- ACTION BUTTONS: Remove and Submit -->
+        <div class="main__btn-group">
+            <!-- Secondary button for removing the image, Main button is for submitting the image -->
+            <button type="button" class = "secondary__btn"id="removeBtn">Remove</button>
+            <!-- Main  button to submit the image (disabled until a valid image is chosen) -->
+            <button type="button" class="main__btn" id="submitBtn" disabled>Submit for Classification</button>
+         </div>
+     </div>
+    </div>
+  </div>
+</div>
+
+<!-- REDIRECTING TO THE RESULTS PAGE POPUP OVERLAY -->
+ <div id = "redirect-popup" class = "popup-overlay" style = "display: none;">
+    <div class = "popup-content">
+        <i class = "fa-solid fa-spinner fa-spin popup-icon"></i>
+        <h3> Classification Complete!</h3>
+        <p> Redirecting to the results page...</p>
+         <button id = "popup-box-okay-btn" class = "popup-btn">Okay</button>         
+    </div>
+ </div>
+  
+    <!-- Link to external JavaScript file -->
+    <script src="image_uploading_page_script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
