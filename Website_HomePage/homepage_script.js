@@ -9,12 +9,12 @@ menu.addEventListener('click', function() {
 })
 
 
-// Logic for the instructions and image uploading pages*/
+// Logic for the instructions pages*/
 // Mark the 'Instructions Page' as visited when the user clicks on the instructions page link */
 const instructionsLink = document.getElementById('nav-instructions');
 if (instructionsLink) {
     instructionsLink.addEventListener('click', function() {
-        localStorage.setItem('hasVisitedInstructionsPage', 'true');
+        sessionStorage.setItem('hasVisitedInstructionsPage', 'true');
     
     });
 }

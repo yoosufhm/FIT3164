@@ -1,0 +1,564 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+/* --- Navbar Styling --- */
+.navbar {
+    background:#0b486b;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    position: sticky;
+    top:0;
+    /* Z-index which essentially is like stacking in terms of three dimensions */
+    z-index: 999;
+}
+
+/* Keeps the navbar items spread out and limits how wide they can stretch */
+.navbar__container {
+    display:flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+/* Shortcut for margin is  that the 1st value is for top , 2nd value for right, bottom 
+    and left 
+    0 is for top and bottom; auto is for left and right*/
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+/* Styles the SnapFin logo with a red-to-yellow text gradient */
+#navbar__logo {
+    background-color: #44ecff;
+    /* creates a gradient like effect for the background of the logo,the 
+    to top is essentially going to the top direction*/
+    background-image: linear-gradient(to top, #c00000 0%, #f3f589 100%);
+    background-size: 100px;
+    -webkit-background-clip:text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display:flex;
+    align-items: center;
+    cursor: pointer;/* has a hand symbol when we hover over it*/
+    text-decoration: none;/* set to none so that the underline is removed , removes any decorations surrounding the text */
+    font-size: 2rem;
+}
+
+
+/* In order to build/add the icon */
+.fa-gem {
+    margin-right: 0.5rem;
+}
+
+/* Gives the fish icon its cyan color */
+.fa-fish {
+   color: #37e4ff;
+}
+
+/* Aligns the links in the center with a 2rem gap between each one */
+.navbar__menu {
+display: flex;
+align-items:center;
+list-style:none;
+text-align: center;
+gap: 2rem; /* adds equal spacing between each link */
+}
+
+.navbar__item {
+    height: 80px;
+}
+
+.navbar__links {
+    color:#fff;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+    
+}
+
+/* Center-aligns the Try Now button*/
+.navbar__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+/* Styles all primary buttons (Try Now, Choose File, Submit) with an orange gradient */
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    /* 10px is for top and bottom , 20px is for left and right*/
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
+    border:none;
+    outline: none;
+    border-radius: 4px;
+    background:  #FF8C00;
+    color: #fff;
+     /* Strong text shadow guarantees readability over the fish */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Do a hover effect: the color of the button changes a bit when you hover over the button */
+.button:hover {
+background: #18c9dc;
+transition: all 0.3s ease;
+}
+
+/* Do a hover effect: the color of each link changes a bit when you hover over them */
+.navbar__links:hover {
+    color:#FF8C00;
+    transition: all 0.5s ease;
+}
+
+
+/* --- Mobile Menu Media Query --- */
+@media screen and (max-width: 960px) {
+    .navbar__container {
+         padding: 0; }
+
+    /* Hides the regular links by pushing them -1000px off the top of the screen */
+    .navbar__menu { 
+        display: grid;
+        grid-template-columns: auto;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: -1000px;
+        transition: all 0.5s ease;
+        height: 50vh;
+        z-index: -1;
+        background: #0b486b;
+    }
+
+    /* When JavaScript adds the 'active' class, slide the menu down to view */
+    .navbar__menu.active {
+        top: 100%;
+        opacity: 1;
+        z-index: 99;
+        height: 80vh;
+        font-size: 1.6rem;
+    }
+
+    #navbar__logo {
+        padding-left: 25px;
+    }
+
+    /* Draws the three horizontal bars for the mobile menu */
+    .navbar__toggle .bar {
+        display:block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: #d8b723;
+        transition: all 0.5s ease-in-out;
+        cursor: pointer;
+    }
+
+    /* Reposition to make sure the links stack up on each other vertically*/
+    .navbar__item {
+        width: 100%;
+    }
+
+    .navbar__links {
+        text-align: center;
+        padding:2rem;
+        width: 100%;
+        display: table;
+    }
+
+    /* Places the mobile menu on the right side of the screen */
+    #mobile-menu {
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        transform: translate(5%, 20%);
+    }
+
+    .navbar__btn { padding-bottom: 2rem; }
+    .button { width: 80%; height: 80px; margin: 0; }
+
+    /* Animation to turn the 3 bars into an 'X' shape when clicked */
+    #mobile-menu.is-active .bar:nth-child(2) { opacity: 0; }
+    #mobile-menu.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    #mobile-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+}
+
+/* --- Main Background (Darkened Underwater Theme) --- */
+
+/* Loads the fish background and overlays a dark blue/black semi-transparent gradient */
+.main {
+    background: linear-gradient(rgba(11,72,107,0.5), rgba(0,0,0,0.7)),url('/Website_HomePage/images/fish_background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;  
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+/* Centers all the upload content horizontally and vertically */
+.main__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1300px;
+    padding: 3rem 0; /* Ensure space on top and bottom for small screens */
+    z-index: 1;
+}     
+
+/* Limits the width of the upload area to certain size so that it isn't too wide */
+.main__content__upload--box {
+    width: 100;
+    max-width: 700px;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Styles the "Fish Image" text with the red/yellow gradient and a drop shadow */
+.main__title-area h3 {
+    font-size: 2.5rem;
+    background-color: #44ecff;
+    background-image: linear-gradient(to top, #bf3030 0%, #f3f589 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
+}
+
+.main__title-area p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: 550;
+    color: #ffffff;
+
+}
+
+.main__upload--container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    color:#44ecff;
+}
+
+/* Styles the rules box (Accepted format: PNG) to have a light transparent background */
+.rules { 
+    background-color: aliceblue;
+    border: 1px solid;
+    padding: 10px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+/* --- Drag and Drop Box --- */
+/* Creates a dashed border and adds a smooth transition for hover effects */
+#dropArea {
+    border: 3px dashed rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    background-color: antiquewhite;
+    padding: 40px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+
+/* add the hovering affect which changes the color of the border of the dropArea */
+#dropArea:hover {
+    border-color: #FF8C00;
+    cursor: pointer;
+}
+
+#dropArea h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 650;
+
+}
+
+#dropArea p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 650;
+}
+
+
+/* -- Buttons --- */
+/* Places the Remove and Submit buttons side by side */
+.main__btn-group {
+    display:flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    gap: 15px;
+}
+
+.main__btn {
+    font-size: 1rem;
+    background-image: linear-gradient(to top, #FF8C00 0%, #5BB0ff 100%);
+    padding: 12px 28px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+    transition: all 0.3s ease;
+}
+
+/* Makes the button grow slightly (scale) and turn cyan when hovered over */
+.main__btn:hover {
+    transform: scale(1.02);
+    background:  #44ecff;
+    color: #ffffff;
+}
+
+
+
+/* Styles the Remove button as a transparent outline to make it different from the Submit button*/
+.secondary__btn {
+    font-size: 1rem;
+    background: transparent;
+    border: 2px solid #FF8C00;
+    color: #FF8C00;
+    padding: 10px 26px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.secondary__btn:hover {
+    background: #FF8C00;
+    color: #ffffff;
+}
+
+/* --- Preview Area --- */
+/* This box is hidden (display: none) by default and only shows after a valid image is uploaded */
+#previewArea {
+    display: none;
+    background-color: antiquewhite;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Ensures the preview image doesn't go outside the box */
+#previewImg {
+    max-width: 100%;
+    max-height: 250px;
+    margin: 0 auto 10px auto;
+    border-radius: 4px;
+    display: block;
+}
+
+/* --- Top Alert Banner (Push Down) --- */
+#top-alert-banner {
+    width: 100%;
+    background-color: #bf3030;  /* Red error background */
+    color: white;
+    z-index: 10000;  /* Stays above the 999 navbar */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 0;
+    padding: 0 50px;  /* Long, wide padding */
+    opacity: 0; /* Makes it invisible when closed */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    overflow: hidden; /* Hides the content from spilling */
+    transition: all 0.5s ease-in-out; /* Smooth sliding animation */
+
+}
+
+/* JS part that adds this class to trigger the slide */
+#top-alert-banner.show-banner {
+    max-height: 150px;
+    padding: 15px 50px;
+    opacity: 1;
+
+}
+
+/* Aligns the icon and text horizontally */
+.banner-content {
+    display: flex;
+    align-items:center;
+    gap: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.banner-content i {
+    font-size: 1.5rem;
+    color: #f3f589;
+}
+
+/* Styles the 'X' close button */
+#close-banner-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+#close-banner-btn:hover {
+    color: #ffc400;
+}
+
+/* --- IMAGE SUCCESS BANNER CSS --- */
+
+#image-upload-success-banner{
+    width: 100%;
+    background-color: #0d8a70; /* Teal success background */
+    color: white;
+    z-index: 10000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 0;
+    padding: 0 50px;
+    opacity: 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    overflow: hidden; 
+    transition: all 0.5s ease-in-out; 
+}
+
+#image-upload-success-banner.show-banner {
+    max-height: 150px;
+    padding: 15px 50px;
+    opacity: 1;
+}
+
+#close-success-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+#close-success-btn:hover {
+    color: #ffc400;
+}
+
+/* REDIRECT TO RESULTS PAGE POPUP STYLING */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Dark transparent backdrop */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Ensures it sits on top of everything */
+
+}
+
+.popup-content {
+    background: #0b486b;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+    border: 2px solid #44ecff;
+    max-width: 450px;
+    width: 90px;
+}
+
+.popup-icon {
+    font-size: 3.5rem;
+    color: #FF8C00;
+   /* color: #f3f589; */
+    margin-bottom: 20px;
+}
+
+.popup-content h3 {
+    color: #44ecff;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.popup-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.popup-btn {
+    background: #FF8C00;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+
+
+.popup-btn:hover {
+    background: #18c9dc;
+}
+
+
+
+/* Responsive tweaks for mobile */
+@media screen and (max-width: 768px) {
+    .main__title-area h3 { font-size: 2rem; }
+    .main__btn-group { flex-direction: column; }
+    .main__btn, .secondary__btn { width: 100%; }
+    #top-alert-banner, #image-upload-success-banner { padding: 15px 20px; flex-direction: column; gap: 10px; text-align: center; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
