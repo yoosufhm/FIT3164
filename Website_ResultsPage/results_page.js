@@ -19,8 +19,8 @@ var speciesInfo = {
     }
 };
 
-var saved = sessionStorage.getIten("fishResult");
-var savedImage = sessionStorage.getItem("fishImage");
+var saved = sessionStorage.getItem("fishResult");
+var savedImg = sessionStorage.getItem("fishImage");
 
 if (saved === null) {
     speciesName.innerText = "No result found";
@@ -45,9 +45,9 @@ if (saved === null) {
         familyText.innerText = "Details not available yet";
     } else {
         sciName.innerText = info.sci;
-        familyText.innerText = "Family:" + info.family;
-        habitatText.innerText = "Habitat:" + info.habitat;
-        regionText.innerText = "Native region:" + info.region;
+        familyText.innerText = "Family: " + info.family;
+        habitatText.innerText = "Habitat: " + info.habitat;
+        regionText.innerText = "Native region: " + info.region;
     }
 
     if (best.confidence < 0.6) {
@@ -58,8 +58,14 @@ if (saved === null) {
         var p = (preds[i].confidence * 100).toFixed(1);
         var row = document.createElement("div");
         row.className = "barRow";
-        row.innerHTML = preds[i].species + " - " + p + "%" +
-            '<div class="barBack"><div class="barFill" style="width:"' + p + '%"></div></div>';
+        row.innerText = preds[i].species + "-" + p + "%";
+        var back = document.createElement("div");
+        back.className = "barBack";
+        var fill = document.createElement("div");
+        fill.className = "barFill";
+        fill.style.width = p + "%";
+        back.appendChild(fill);
+        row.appendChild(back);
         top4List.appendChild(row);
     }
 }
