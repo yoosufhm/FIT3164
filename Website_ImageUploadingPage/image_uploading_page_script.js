@@ -21,6 +21,7 @@ if (instructionsLink) {
     });
 }
 
+
 // ==========================================
 // 3. HTML ELEMENT VARIABLES
 // ==========================================
@@ -248,7 +249,7 @@ submitBtn.onclick = async function() {
             const topScore = Math.round(topMatch.confidence * 100);
 
             // Format ALL probabilities into a single line (e.g., "Rohu (17%) | Silver Carp (16%)")
-            const otherProbabilities = outputData.confidences
+            const allProbabilities = outputData.confidences
                 .slice(1) 
                 .map(c => `${c.label} (${Math.round(c.confidence * 100)}%)`)
                 .join(", ");
