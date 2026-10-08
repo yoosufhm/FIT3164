@@ -485,8 +485,8 @@ transition: all 0.3s ease;
     color: #ffffff;
     box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
     border: 2px solid #44ecff;
-    max-width: 450px;
-    width: 90px;
+    width: 75%;
+    max-width: 350px;
 }
 
 .popup-icon {
@@ -499,7 +499,7 @@ transition: all 0.3s ease;
 .popup-content h3 {
     color: #44ecff;
     margin-bottom: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 .popup-content p {
@@ -536,6 +536,7 @@ transition: all 0.3s ease;
     .main__btn, .secondary__btn { width: 100%; }
     #top-alert-banner, #image-upload-success-banner { padding: 15px 20px; flex-direction: column; gap: 10px; text-align: center; }
 }
+
 
 
 
