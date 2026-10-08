@@ -1,5 +1,5 @@
 .main {
-    background: linear-gradient(rgba(11,72,107,0,5), rgba(0,0,0,0.7)), url('../Website_HomePage/images/fish_background.jpg');
+    background: linear-gradient(rgba(11,72,107,0.5), rgba(0,0,0,0.7)), url('../Website_HomePage/images/fish_background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -9,14 +9,14 @@
     text-align: center;
 }
 
-.resutls__container{
+.results__container{
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
     padding: 0 20px 40px;
 }
 
-#resultsCard, #detailsCard, #top4Card {
+#resultCard, #detailsCard, #top4Card {
     background-color: antiquewhite;
     color: #222;
     border: 1px solid rgba(255,255,255,0.2);

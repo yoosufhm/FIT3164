@@ -58,7 +58,7 @@ if (saved === null) {
         var p = (preds[i].confidence * 100).toFixed(1);
         var row = document.createElement("div");
         row.className = "barRow";
-        row.innerText = preds[i].species + "-" + p + "%";
+        row.innerText = preds[i].species + " - " + p + "%";
         var back = document.createElement("div");
         back.className = "barBack";
         var fill = document.createElement("div");
