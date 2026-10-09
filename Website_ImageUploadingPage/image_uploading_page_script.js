@@ -266,7 +266,17 @@ submitBtn.onclick = async function() {
 
         // Store the Data for the Results Page 
         sessionStorage.setItem("fishResultData", bannerContent);
-
+        if (outputData && outputData.confidences) {
+            var predictions = outputData.confidences.map(function (c) {
+                return { species: c.label, confidence: c.confidence };
+            });
+            sessionStorage.setItem("fishResult", JSON.stringify({ predictions: predictions }));
+        }
+        try {
+            sessionStorage.setItem("fishImage", previewImg.src);
+        } catch (e) {
+            console.log("image too big to save for the results page");
+        }
         // Print the saved results to the console to verify that storing part is actually working 
         console.log("SUCCESS! Data saved to sessionStorage:", sessionStorage.getItem("fishResultData"));
 
@@ -276,7 +286,7 @@ submitBtn.onclick = async function() {
 
         // Wait for 3 seconds, then route to the results page using (No setTimeout string evaluation issues)
         await new Promise(resolve => setTimeout(resolve, 3000));
-        window.location.href = "results_page.html";
+        window.location.href = "../Website_ResultsPage/results_page.html";
 
     } catch (error) {
         // Handle errors if the Hugging Face Space is asleep or offline
@@ -298,4 +308,4 @@ submitBtn.onclick = async function() {
         submitBtn.disabled = false;
         removeBtn.disabled = false;
     }
-};
+};  

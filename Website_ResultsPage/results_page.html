@@ -1,11 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset = "UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results Page</title>
+    <title>SnapFin - Results</title>
+    <link rel="stylesheet" href="../Website_ImageUploadingPage/image_uploading_page.css">
+    <link rel="stylesheet" href="results_page.css">
+    <script src = "https://kit.fontawesome.com/10ab56747e.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght,YOPQ@100..900,300&display=swap" rel="stylesheet">
 </head>
+
 <body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="../Website_HomePage/homepage_index.html" id="navbar__logo">
+                <i class="fa-solid fa-fish"></i>SnapFin
+            </a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="../Website_HomePage/homepage_index.html" class="navbar__links">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="#" class="navbar__links">The Model</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="#" class="navbar__links">Instructions</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="../Website_ImageUploadingPage/image_uploading_page.html" class="navbar__links">Classify Fish</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="../Website_ImageUploadingPage/image_uploading_page.html" class="nbutton">Try Now</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="main__container">
+            <div class="main__title-area">
+                <h3>Classification results</h3>
+                <p>This is the results of the fish species you uploaded</p>
+            </div>
+            <div class="results__container">
+                <div id="resultCard">
+                    <img id="resultsImg" src="" alt="uploaded fish">
+                    <h2 id="speciesName"></h2>
+                    <p id="sciName"></p>
+                    <p id="accText"></p>
+                    <div id="lowWarning">Low confidence score, please upload a clearer photo</div>
+                </div>
+
+            <div id="detailsCard">
+                <h3>Species Details</h3>
+                <p id="familyText"></p>
+                <p id="habitatText"></p>
+                <p id="regionText"></p>
+            </div>
+
+            <div id="top4Card">
+                <h3>Top predictions</h3>
+                <div id="top4List"></div>
+            </div>
+
+            <div class="main__btn-group">
+                <button type="button" class="secondary__btn" id="anotherB">Classify another</button>
+                <button type="button" class="main__btn" id="backB">Back to Home</button>
+            </div>
+        </div>
+        </div>
+    </div>
     
+    <script src="results_page.js"></script>
 </body>
 </html>
