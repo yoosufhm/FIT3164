@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions | SnapFin</title>
+
+    <link rel="stylesheet" href="instructions_page.css">
+
+    <script src="https://kit.fontawesome.com/10ab56747e.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght,YOPQ@100..900,300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="navbar__container">
+
+            <a href="homepage_index.html" id="navbar__logo">
+                <i class="fa-solid fa-fish"></i>SnapFin
+            </a>
+
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/Website_HomePage/homepage_index.html" class="navbar__links">Home</a>
+                </li>
+
+                <li class="navbar__item">
+                    <a href="/Website_InstructionsPage/instructions_page.html" class="navbar__links active-link" id="nav-instructions">Instructions</a>
+                </li>
+
+                <li class="navbar__item">
+                    <a href="/Website_ImageUploadingPage/image_uploading_page.html"
+                       class="navbar__links check-instructions">Classify Fish</a>
+                </li>
+
+                <li class="navbar__btn">
+                    <a href="/Website_ImageUploadingPage/image_uploading_page.html"
+                       class="button check-instructions">Try Now →</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Instructions Hero Section -->
+    <main class="instructions-page">
+
+        <section class="instructions-hero">
+            <div class="hero-content">
+                <div class="hero-icon">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+
+                <h1>How to Use the <span>AI Fish Classifier</span></h1>
+
+                <p>
+                    Follow these simple steps to upload your fish image and
+                    receive an AI-powered species prediction.
+                </p>
+            </div>
+        </section>
+
+        <!-- Instructions Cards -->
+        <section class="instructions-section">
+
+            <div class="instruction-card">
+                <div class="step-number">1</div>
+
+                <div class="step-icon">
+                    <i class="fa-solid fa-upload"></i>
+                </div>
+
+                <div class="step-content">
+                    <h2>Upload Your Image</h2>
+
+                    <p>
+                        Upload a clear image of the fish you want to identify.
+                    </p>
+
+                    <div class="supported-format">
+                        <i class="fa-solid fa-file-image"></i>
+                        <strong>Supported formats:</strong> JPG, JPEG, PNG
+                    </div>
+
+                    <h3>For the best results:</h3>
+
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            Make sure the fish is clearly visible.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            Use a well-lit, focused image.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            Avoid heavily blurred or obstructed images.
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            Keep the fish as the main subject of the image.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="instruction-card">
+                <div class="step-number">2</div>
+
+                <div class="step-icon">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+
+                <div class="step-content">
+                    <h2>Let the AI Analyse the Image</h2>
+
+                    <p>
+                        Once your image is uploaded, the AI model will analyse
+                        its visual features and compare them with patterns
+                        learned from the Fish-Pak dataset.
+                    </p>
+
+                    <div class="model-note">
+                        <i class="fa-solid fa-microchip"></i>
+                        <div>
+                            <strong>Vision Transformer (ViT)</strong>
+                            <p>
+                                The system uses a Vision Transformer (ViT)
+                                model trained specifically for fish species
+                                classification.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instruction-card">
+                <div class="step-number">3</div>
+
+                <div class="step-icon">
+                    <i class="fa-solid fa-chart-column"></i>
+                </div>
+
+                <div class="step-content">
+                    <h2>View Your Results</h2>
+
+                    <p>
+                        After processing, the system will display the
+                        following information:
+                    </p>
+
+                    <div class="result-item">
+                        <div class="result-icon">
+                            <i class="fa-solid fa-fish"></i>
+                        </div>
+                        <div>
+                            <h3>Predicted Species</h3>
+                            <p>
+                                The fish species identified by the model.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="result-item">
+                        <div class="result-icon">
+                            <i class="fa-solid fa-percent"></i>
+                        </div>
+                        <div>
+                            <h3>Probability</h3>
+                            <p>
+                                The model's confidence distribution across
+                                the possible species classes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="confidence-note">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <p>
+                            A higher probability indicates that the model
+                            considers that class more likely, but it does not
+                            guarantee that the prediction is correct.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Important Notes -->
+        <section class="notes-section">
+            <div class="notes-card">
+                <div class="notes-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <div>
+                    <h2>Important Notes</h2>
+
+                    <p>
+                        The classifier is designed for the fish species
+                        represented in its training dataset.
+                    </p>
+
+                    <ul>
+                        <li>
+                            Poor lighting, blurry images, unusual angles,
+                            or unfamiliar fish may affect the prediction.
+                        </li>
+                        <li>
+                            AI predictions should be independently verified
+                            when accurate species identification is important.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ready CTA -->
+        <section class="ready-section">
+            <div class="ready-content">
+                <div class="ready-icon">
+                    <i class="fa-solid fa-fish-fins"></i>
+                </div>
+
+                <h2>Ready to Start?</h2>
+
+                <p>
+                    Upload a clear fish image and let SnapFin identify it!
+                </p>
+
+                <a href="/Website_ImageUploadingPage/image_uploading_page.html"
+                   class="ready-button">
+                    Upload a Fish Image <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="instructions_page.js"></script>
+</body>
+</html>
