@@ -265,18 +265,10 @@ submitBtn.onclick = async function() {
         /* showSuccessBanner(bannerContent); */
 
         // Store the Data for the Results Page 
-        sessionStorage.setItem("fishResultData", bannerContent);
-        if (outputData && outputData.confidences) {
-            var predictions = outputData.confidences.map(function (c) {
-                return { species: c.label, confidence: c.confidence };
-            });
-            sessionStorage.setItem("fishResult", JSON.stringify({ predictions: predictions }));
-        }
-        try {
-            sessionStorage.setItem("fishImage", previewImg.src);
-        } catch (e) {
-            console.log("image too big to save for the results page");
-        }
+        sessionStorage.setItem("fishPredictions", JSON.stringify(outputData.confidences));
+        sessionStorage.setItem("fishImage", previewImg.src); 
+        
+        console.log("SUCCESS! Data saved securely.");
         // Print the saved results to the console to verify that storing part is actually working 
         console.log("SUCCESS! Data saved to sessionStorage:", sessionStorage.getItem("fishResultData"));
 

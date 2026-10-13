@@ -1,76 +1,94 @@
-var resultImg = document.getElementById("resultImg");
-var speciesName = document.getElementById("speciesName");
-var sciName = document.getElementById("sciName");
-var accText = document.getElementById("accText");
-var lowWarning = document.getElementById("lowWarning");
-var familyText = document.getElementById("familyText");
-var habitatText = document.getElementById("habitatText");
-var regionText = document.getElementById("regionText");
-var top4List = document.getElementById("top4List");
-var anotherB = document.getElementById("anotherB");
-var backB = document.getElementById("backB");
+// HTML Elements
+const resultImg = document.getElementById("resultsImg");
+const speciesName = document.getElementById("speciesName");
+const accText = document.getElementById("accText");
+const lowWarning = document.getElementById("lowWarning");
 
-var speciesInfo = {
-    "Rohu": {
-        sci: "Labeo rohita",
-        family: "Cyprinidae",
-        habitat: "Freshwater",
-        region: "South Asia"
-    }
-};
+// Grid Element
+const probabilitiesGrid = document.getElementById("probabilitiesGrid");
 
-var saved = sessionStorage.getItem("fishResult");
-var savedImg = sessionStorage.getItem("fishImage");
+// Buttons
+const anotherB = document.getElementById("anotherB");
+const backB = document.getElementById("backB");
 
-if (saved === null) {
-    speciesName.innerText = "No result found";
-    sciName.innerText = "Please upload an image first";
-}   else {
-    var data = JSON.parse(saved);
-    var preds = data.predictions;
-    var best = preds[0];
-    var percent = (best.confidence * 100).toFixed(1);
+// 1. Fetch Data from sessionStorage
+const savedPredictions = sessionStorage.getItem("fishPredictions");
+const savedImg = sessionStorage.getItem("fishImage");
 
-    speciesName.innerText = best.species;
-    accText.innerText = percent + "% accuracy";
+if (!savedPredictions) {
+    // Failsafe if accessed directly without uploading
+    speciesName.innerText = "No Result Found";
+    accText.innerText = "Please upload an image first.";
+} else {
+    // 2. Parse the JSON Array 
+    const preds = JSON.parse(savedPredictions);
+    
+    // 3. Process the Top Match (Index 0)
+    const best = preds[0];
+    const topScore = Math.round(best.confidence * 100);
 
-    if (savedImg !==null) {
+    speciesName.innerText = best.label;
+    accText.innerText = `Confidence: ${topScore}%`;
+
+    // Show Image
+    if (savedImg) {
         resultImg.src = savedImg;
         resultImg.style.display = "block";
     }
 
-    var info = speciesInfo[best.species];
-    if (info ===undefined)  {
-        sciName.innerText = "";
-        familyText.innerText = "Details not available yet";
-    } else {
-        sciName.innerText = info.sci;
-        familyText.innerText = "Family: " + info.family;
-        habitatText.innerText = "Habitat: " + info.habitat;
-        regionText.innerText = "Native region: " + info.region;
-    }
-
-    if (best.confidence < 0.6) {
+    // Show low confidence warning if under 40%
+    if (topScore < 40) {
         lowWarning.style.display = "block";
     }
 
-    for (var i = 0; i < preds.length && i < 4; i++) {
-        var p = (preds[i].confidence * 100).toFixed(1);
-        var row = document.createElement("div");
-        row.className = "barRow";
-        row.innerText = preds[i].species + " - " + p + "%";
-        var back = document.createElement("div");
-        back.className = "barBack";
-        var fill = document.createElement("div");
-        fill.className = "barFill";
-        fill.style.width = p + "%";
-        back.appendChild(fill);
-        row.appendChild(back);
-        top4List.appendChild(row);
+    // ==========================================
+    // 4. GENERATE INDIVIDUAL PROBABILITY CARDS
+    // ==========================================
+    // Loop through the rest of the array (skipping the winner at index 0)
+    for (let i = 1; i < preds.length; i++) {
+        let pName = preds[i].label;
+        let pScore = Math.round(preds[i].confidence * 100);
+
+        // Only show cards for probabilities higher than 0%
+        if (pScore > 0) {
+            // Create the card container
+            let card = document.createElement("div");
+            card.className = "prob-card";
+
+            // Add the Fish Name
+            let nameTag = document.createElement("h4");
+            nameTag.innerText = pName;
+
+            // Add the Progress Bar Background
+            let barBack = document.createElement("div");
+            barBack.className = "barBack";
+
+            // Add the Progress Bar Fill (The orange/yellow gradient)
+            let barFill = document.createElement("div");
+            barFill.className = "barFill";
+            // Set the width based on the confidence score!
+            barFill.style.width = pScore + "%";
+
+            // Add the text percentage
+            let percentTag = document.createElement("div");
+            percentTag.className = "prob-percent";
+            percentTag.innerText = pScore + "%";
+
+            // Construct the card
+            barBack.appendChild(barFill);
+            card.appendChild(nameTag);
+            card.appendChild(barBack);
+            card.appendChild(percentTag);
+
+            // Inject the card into the grid on the webpage
+            probabilitiesGrid.appendChild(card);
+        }
     }
 }
 
-
+// ==========================================
+// 5. BUTTON ROUTING
+// ==========================================
 anotherB.onclick = function() {
     window.location.href = "../Website_ImageUploadingPage/image_uploading_page.html";
 }
@@ -79,10 +97,15 @@ backB.onclick = function () {
     window.location.href = "../Website_HomePage/homepage_index.html";
 }
 
-var mobileMenu = document.getElementById("mobile-menu");
-var menuList = document.querySelector(".navbar__menu");
+// ==========================================
+// 6. MOBILE MENU LOGIC
+// ==========================================
+const mobileMenu = document.getElementById("mobile-menu");
+const menuList = document.querySelector(".navbar__menu");
 
-mobileMenu.onclick = function() {
-    mobileMenu.classList.toggle("is-active");
-    menuList.classList.toggle("active");
+if (mobileMenu) {
+    mobileMenu.onclick = function() {
+        mobileMenu.classList.toggle("is-active");
+        menuList.classList.toggle("active");
+    }
 }
