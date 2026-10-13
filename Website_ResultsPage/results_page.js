@@ -5,7 +5,7 @@ const accText = document.getElementById("accText");
 const lowWarning = document.getElementById("lowWarning");
 
 // Grid Element
-const probabilitiesGrid = document.getElementById("probabilitiesGrid");
+const top4List = document.getElementById("top4List");
 
 // Buttons
 const anotherB = document.getElementById("anotherB");
@@ -41,64 +41,51 @@ if (!savedPredictions) {
         lowWarning.style.display = "block";
     }
 
-    // ==========================================
-    // 4. GENERATE INDIVIDUAL PROBABILITY CARDS
-    // ==========================================
-    // Loop through the rest of the array (skipping the winner at index 0)
-    for (let i = 1; i < preds.length; i++) {
-        let pName = preds[i].label;
-        let pScore = Math.round(preds[i].confidence * 100);
-
-        // Only show cards for probabilities higher than 0%
-        if (pScore > 0) {
-            // Create the card container
-            let card = document.createElement("div");
-            card.className = "prob-card";
-
-            // Add the Fish Name
-            let nameTag = document.createElement("h4");
-            nameTag.innerText = pName;
-
-            // Add the Progress Bar Background
-            let barBack = document.createElement("div");
-            barBack.className = "barBack";
-
-            // Add the Progress Bar Fill (The orange/yellow gradient)
-            let barFill = document.createElement("div");
-            barFill.className = "barFill";
-            // Set the width based on the confidence score!
-            barFill.style.width = pScore + "%";
-
-            // Add the text percentage
-            let percentTag = document.createElement("div");
-            percentTag.className = "prob-percent";
-            percentTag.innerText = pScore + "%";
-
-            // Construct the card
-            barBack.appendChild(barFill);
-            card.appendChild(nameTag);
-            card.appendChild(barBack);
-            card.appendChild(percentTag);
-
-            // Inject the card into the grid on the webpage
-            probabilitiesGrid.appendChild(card);
+    if (top4List) {
+        // Start at index 1 to skip the winner, and loop through the next 4 possibilities
+        for (let i = 1; i < preds.length && i < 5; i++) {
+            let pScore = Math.round(preds[i].confidence * 100);
+            
+            // Only show slider if probability is higher than 0%
+            if (pScore > 0) {
+                let row = document.createElement("div");
+                row.className = "barRow";
+                row.innerText = preds[i].label + " - " + pScore + "%";
+                
+                let back = document.createElement("div");
+                back.className = "barBack";
+                
+                let fill = document.createElement("div");
+                fill.className = "barFill";
+                fill.style.width = pScore + "%";
+                
+                back.appendChild(fill);
+                row.appendChild(back);
+                
+                // Inject the slider into the top4List div!
+                top4List.appendChild(row);
+            }
         }
     }
 }
 
 // ==========================================
-// 5. BUTTON ROUTING
+// 6. BUTTON ROUTING
 // ==========================================
-anotherB.onclick = function() {
-    window.location.href = "../Website_ImageUploadingPage/image_uploading_page.html";
+if(anotherB) {
+    anotherB.onclick = function() {
+        window.location.href = "../Website_ImageUploadingPage/image_uploading_page.html";
+    }
 }
 
-backB.onclick = function () {
-    window.location.href = "../Website_HomePage/homepage_index.html";
+if(backB) {
+    backB.onclick = function () {
+        window.location.href = "../Website_HomePage/homepage_index.html";
+    }
 }
 
 // ==========================================
-// 6. MOBILE MENU LOGIC
+// 7. MOBILE MENU LOGIC
 // ==========================================
 const mobileMenu = document.getElementById("mobile-menu");
 const menuList = document.querySelector(".navbar__menu");
