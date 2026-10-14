@@ -1,5 +1,5 @@
 /* =======================================
-   1. FISH BACKGROUND OVERRIDE FROM HOMEPAGE
+   1. FORCE BACKGROUND OVERRIDE
 ======================================= */
 .main {
     background: linear-gradient(rgba(11,72,107,0.7), rgba(0,0,0,0.85)), url('../Website_HomePage/images/fish_background.jpg');
@@ -15,7 +15,7 @@
 ======================================= */
 .results__container {
     width: 100%;
-    max-width: 650px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 0 20px 40px;
     display: flex;
@@ -27,12 +27,12 @@
    3. SNAPFIN THEMED CARDS
 ======================================= */
 #resultCard, #detailsCard, #top4Card {
-    background-color: #0b486b; /* Dark Blue from your navbar */
+    background-color: #0b486b; 
     color: #ffffff;
-    border: 2px solid #44ecff; /* Cyan borders */
+    border: 2px solid #44ecff; 
     border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.15);
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
 }
 
 #resultCard {
@@ -45,14 +45,13 @@
     max-height: 250px;
     margin: 0 auto 15px auto;
     border-radius: 8px;
-    border: 3px solid #FF8C00; /* Orange border matching the Try Now button */
+    border: 2px solid #FF8C00; 
 }
 
 #speciesName {
     font-size: 2.2rem;
     color: #44ecff;
     margin-bottom: 5px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
 }
 
 #sciName {
@@ -70,12 +69,12 @@
 
 #lowWarning {
     display: none;
-    background-color: rgba(191, 48, 48, 0.8);
+    background-color: #bf3030;
     color: white;
-    padding: 12px;
+    padding: 10px;
     border-radius: 4px;
     margin-top: 15px;
-    font-size: 1rem;
+    font-size: 14px;
     border: 1px solid #ff4d4d;
 }
 
@@ -83,14 +82,32 @@
     margin-bottom: 15px;
     color: #44ecff;
     border-bottom: 1px solid rgba(68, 236, 255, 0.3);
-    padding-bottom: 8px;
-    font-size: 1.4rem;
+    padding-bottom: 5px;
 }
 
-#detailsCard p {
+/* API Text and Link Styling */
+#apiSummary {
     margin: 8px 0;
     font-size: 1rem;
+    line-height: 1.6;
     color: #e0e0e0;
+    max-height: 250px; /* Adjust height as needed */
+    overflow-y: auto; /* Adds a clean scrollbar */
+    padding-right: 10px;
+}
+
+#apiLink {
+    display: inline-block;
+    margin-top: 12px;
+    color: #FF8C00;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+#apiLink:hover {
+    color: #44ecff;
 }
 
 /* =======================================
@@ -98,7 +115,7 @@
 ======================================= */
 .barRow {
     margin-bottom: 15px;
-    font-size: 1rem;
+    font-size: 15px;
     color: #ffffff;
 }
 
@@ -107,7 +124,7 @@
     border-radius: 4px;
     height: 14px;
     overflow: hidden;
-    margin-top: 6px;
+    margin-top: 5px;
 }
 
 .barFill {
