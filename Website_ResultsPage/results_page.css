@@ -26,10 +26,10 @@
 /* =======================================
    3. SNAPFIN THEMED CARDS
 ======================================= */
-#resultCard, #detailsCard, #top4Card {
-    background-color: #0b486b; 
+#resultCard, #top4Card {
+    background-color: #0b486b;
     color: #ffffff;
-    border: 2px solid #44ecff; 
+    border: 2px solid #44ecff;
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
@@ -45,7 +45,7 @@
     max-height: 250px;
     margin: 0 auto 15px auto;
     border-radius: 8px;
-    border: 2px solid #FF8C00; 
+    border: 2px solid #FF8C00;
 }
 
 #speciesName {
@@ -78,36 +78,11 @@
     border: 1px solid #ff4d4d;
 }
 
-#detailsCard h3, #top4Card h3 {
+#top4Card h3 {
     margin-bottom: 15px;
     color: #44ecff;
     border-bottom: 1px solid rgba(68, 236, 255, 0.3);
     padding-bottom: 5px;
-}
-
-/* API Text and Link Styling */
-#apiSummary {
-    margin: 8px 0;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #e0e0e0;
-    max-height: 250px; /* Adjust height as needed */
-    overflow-y: auto; /* Adds a clean scrollbar */
-    padding-right: 10px;
-}
-
-#apiLink {
-    display: inline-block;
-    margin-top: 12px;
-    color: #FF8C00;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 15px;
-    transition: color 0.3s ease;
-}
-
-#apiLink:hover {
-    color: #44ecff;
 }
 
 /* =======================================
