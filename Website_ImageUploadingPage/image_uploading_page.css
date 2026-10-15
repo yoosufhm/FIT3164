@@ -203,7 +203,7 @@ transition: all 0.3s ease;
 
 /* Loads the fish background and overlays a dark blue/black semi-transparent gradient */
 .main {
-    background: linear-gradient(rgba(11,72,107,0.5), rgba(0,0,0,0.7)),url('/Website_HomePage/images/fish_background.jpg');
+    background: linear-gradient(rgba(11,72,107,0.5), rgba(0,0,0,0.7)),url('../Website_HomePage/images/fish_background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

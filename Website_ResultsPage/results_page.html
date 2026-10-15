@@ -28,12 +28,11 @@
                     <a href="../Website_HomePage/homepage_index.html" class="navbar__links">Home</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="/Website_InstructionsPage/instructions_page.html" class="navbar__links">Instructions</a>
+                    <a href="../Website_InstructionsPage/instructions_page.html" class="navbar__links">Instructions</a>
                 </li>
-            <li class="navbar__item">
-                <!-- Create the a tag -->
-                 <a href="results_page.html" class="navbar__links check-instructions"> Results </a>
-               </li>
+                <li class="navbar__item">
+                    <a href="results_page.html" class="navbar__links check-instructions">Results</a>
+                </li>
                 <li class="navbar__btn">
                     <a href="../Website_ImageUploadingPage/image_uploading_page.html" class="button">Try Now →</a>
                 </li>
@@ -48,24 +47,16 @@
                 <h3>Classification results</h3>
                 <p>This is the results of the fish species you uploaded</p>
             </div>
-            
+
             <div class="results__container">
                 <!-- Result Card -->
                 <div id="resultCard">
                     <img id="resultsImg" src="" alt="uploaded fish">
                     <h2 id="speciesName"></h2>
-                    <p id="sciName">Loading scientific data...</p>
+                    <p id="sciName"></p>
                     <p id="accText"></p>
                     <div id="lowWarning">Low confidence score, please upload a clearer photo</div>
                 </div>
-                <!-- API Details Card -->
-            <div id="detailsCard">
-                <h3><i class="fa-solid fa-dna"></i> Species Details</h3>
-                
-                <!-- The JS searches for these exact two IDs to inject the data! -->
-                <p id="apiSummary">Fetching biological data...</p>
-                <a id="apiLink" href="#" target="_blank" style="display: inline-block;">View Full Encyclopedia Profile → </a>
-            </div>
 
                 <!-- Other Predictions Card (Sliders) -->
                 <div id="top4Card">
@@ -81,7 +72,7 @@
             </div>
         </div>
     </div>
-    
+
     <script src="results_page.js"></script>
 </body>
 </html>
