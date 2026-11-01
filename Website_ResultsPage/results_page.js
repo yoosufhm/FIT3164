@@ -93,7 +93,7 @@ if (anotherB) {
 
 if (backB) {
     backB.onclick = function () {
-        window.location.href = "index.html";
+        window.location.href = "../Website_HomePage/homepage.html";
     }
 }
 
